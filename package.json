@@ -1,5 +1,5 @@
 {
-  "name": "arango",
+  "name": "@acastellon/arango",
   "version": "1.0.0",
   "description": "arangodb persistence interface",
   "main": "arango.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/antonio-castellon/arango"
+    "url": "git+https://github.com/antonio-castellon/arango.git"
   },
   "keywords": [
     "arangojs",
@@ -20,5 +20,9 @@
     "arangojs": "^6.5.0"
   },
   "author": "acastellon",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antonio-castellon/arango/issues"
+  },
+  "homepage": "https://github.com/antonio-castellon/arango#readme"
 }
