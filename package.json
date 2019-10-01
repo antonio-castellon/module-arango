@@ -19,7 +19,7 @@
   "dependencies": {
     "arangojs": "^6.5.0"
   },
-  "author": "acastellon",
+  "author": "Antonio Castellon",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/antonio-castellon/arango/issues"
