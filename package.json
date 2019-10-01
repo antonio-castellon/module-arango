@@ -1,0 +1,16 @@
+{
+  "name": "arango",
+  "version": "1.0.0",
+  "description": "arangodb persistence interface",
+  "main": "arango.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "arangojs",
+    "utils",
+    "database"
+  ],
+  "author": "acastellon",
+  "license": "ISC"
+}
