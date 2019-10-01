@@ -1,7 +1,7 @@
 //
 // ArangoDB connector manager.
 //
-// Philip Morris International R&D - 2018/2019 (c)
+// Castellon.CH (c)
 // Author: Antonio Castellon - antonio@castellon.ch
 //
 // config parameter:

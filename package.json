@@ -4,13 +4,21 @@
   "description": "arangodb persistence interface",
   "main": "arango.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antonio-castellon/arango"
   },
   "keywords": [
     "arangojs",
     "utils",
-    "database"
+    "database",
+    "nosql"
   ],
+  "dependencies": {
+    "arangojs": "^6.5.0"
+  },
   "author": "acastellon",
-  "license": "ISC"
+  "license": "MIT"
 }
