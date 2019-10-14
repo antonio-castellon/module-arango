@@ -1,7 +1,7 @@
 //
 // test module
 //
-const config = require('./config-template.js');
+const config = require('./config.arango.template.js');
 const db = require('@acastellon/arango')(config);
 
 const _COLLECTION = 'lots';
