@@ -3,7 +3,8 @@
 A Simplified interface to arango database using the arangojs library
 At the moment is accessing only to JSON Documents, not graph.
 
-configuration as for example: 'config.arango.js' 
+#### configuration 
+saved for example as 'config.arango.js' 
 
     module.exports = {
     
@@ -18,11 +19,12 @@ configuration as for example: 'config.arango.js'
       ,TRACES : false
     }
 
-usage:
+#### usage
 
     const config = require('./config.arango.js');
     const db     = require('@acastellon/arango')(config);
 
+#### methods
 
 find object(s) that contains all the parameters described in a collection
 
