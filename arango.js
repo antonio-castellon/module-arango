@@ -31,7 +31,7 @@ module.exports = function(setup) {
     //
     const db = new arangojs.Database({
                                                 url : setup.ARANGO_URL
-                                                ,agentOptions: {
+                                                ,agentOptions: {  /* @TODO: externalize it, and make it more flexible */
                                                                   ca: [
                                                                       fs.readFileSync(setup.CERTIFICATION_PATH + "/ca.pem")
                                                                   ]
