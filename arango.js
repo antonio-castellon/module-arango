@@ -1,3 +1,4 @@
+"use strict";
 //
 // ArangoDB connector manager.
 //
