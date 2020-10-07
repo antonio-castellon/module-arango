@@ -25,19 +25,19 @@ const fs = require('fs');
 module.exports = function(setup) {
 
     const model = {};
+    let _agentOptions = {}
 
+    if (setup.CERTIFICATION_PATH) {
+        _agentOptions.ca = [
+                fs.readFileSync(setup.CERTIFICATION_PATH + "/ca.pem")
+            ]
+
+    }
     //
     // CONFIGURATION
     //
-    const db = new arangojs.Database({
-                                                url : setup.ARANGO_URL
-                                                ,agentOptions: {  /* @TODO: externalize it, and make it more flexible */
-                                                                  ca: [
-                                                                      fs.readFileSync(setup.CERTIFICATION_PATH + "/ca.pem")
-                                                                  ]
-                                                              }
-                                            }
-                                            );
+    const db = new arangojs.Database({ url : setup.ARANGO_URL ,agentOptions: _agentOptions });
+
     db.useBasicAuth(setup.ARANGO_USER, setup.ARANGO_PASSWORD);
     db.useDatabase(setup.ARANGO_DATABASE);
 
