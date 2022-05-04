@@ -9,7 +9,7 @@
 //
 // module.exports = {
 //      
-//      ,CERTIFICATION_PATH : '/opt/brdb/Certificate'
+//      ,CERTIFICATION_PATH : '/opt/<project>/Certificate'
 //
 //  	,ARANGO_URL: 'http://127.0.0.1:8529'
 //  	,ARANGO_USER: 'root'
