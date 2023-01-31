@@ -105,8 +105,6 @@ module.exports = function(setup) {
 
                if (conditions.length > 0) { conditions = ' FILTER ' + conditions; };
 
-               // console.log(collectionName + ' >> ' + conditions);
-
                 db.query('FOR i IN ' + collectionName + conditions + ' RETURN i')
                     .then(function (cursor) {return cursor.all();})
                     .then(
@@ -137,7 +135,6 @@ module.exports = function(setup) {
                     .then(function (cursor) {return cursor.all();})
                     .then(
                         function (list) {
-                            /*console.log(list);*/
                             resolve(list);
                         },
                         function (err) {reject(err);}
@@ -152,15 +149,15 @@ module.exports = function(setup) {
     }
 
 
-    function insert(document, collectionName)
+    function insert(document, collectionName, returnNew = false)
     {
         return new Promise(function(resolve, reject){
             try {
                 const collection = db.collection(collectionName);
 
-                collection.save(document /*, {returnNew:true}*/).then(function(results){
-                    // resolve(results.new);
-                    resolve(results._result);
+                collection.save(document , {returnNew: returnNew}).then(function(results){
+                    if (returnNew) resolve(results.new);
+                    else resolve(results._result);
                 });
 
             }catch(ex) {
@@ -171,23 +168,18 @@ module.exports = function(setup) {
         });
     }
 
-    function update(document, collectionName)
+    function update(document, collectionName, returnNew=false)
     {
         return new Promise(function(resolve, reject){
             try {
-                // console.log(collectionName);
-                // console.log(document);
-
                 const collection = db.collection(collectionName);
 
-                collection.replace(document._id, document /*, {returnNew:true}*/).then(function(results){
-                   // console.log(results)
-                    resolve(results._result);
-                    //resolve(results.new);
+                collection.replace(document._id, document , {returnNew: returnNew}).then(function(results){
+                    if (returnNew) resolve(results.new);
+                    else resolve(results._result);
                 });
 
             }catch(ex) {
-                //  console.log(document);
                 console.log(ex);
                 reject(ex);
             }
@@ -216,7 +208,7 @@ module.exports = function(setup) {
         });
     }
 
-    function save(document, collectionName){
+    function save(document, collectionName, returnNew = false){
         return new Promise(function(resolve, reject){
 
             try {
@@ -225,18 +217,18 @@ module.exports = function(setup) {
                 const collection = db.collection(collectionName);
 
                 if (typeof document._key == 'undefined') {
-                     insert(document, collectionName).then(function(r){ resolve(r)});
+                     insert(document, collectionName, returnNew).then(function(r){ resolve(r)});
                  }
                  else {
                     collection.exists(document).then(function (results) {
 
                         if (results) {
-                            update(document, collectionName).then(function (r) {
+                            update(document, collectionName, returnNew).then(function (r) {
                                 resolve(r)
                             });
                         }
                         else {
-                            insert(document, collectionName).then(function (r) {
+                            insert(document, collectionName, returnNew).then(function (r) {
                                 resolve(r)
                             });
                         }
