@@ -9,6 +9,10 @@
 const arangojs = require('arangojs');
 const fs = require('fs');
 
+/**
+ * ArangoDB helper.
+ * @param {object} setup
+ */
 module.exports = function(setup) {
 
   const model = {};
@@ -32,6 +36,10 @@ module.exports = function(setup) {
   model.save = save;
   model.remove = remove;
 
+  /**
+   * @param {object} parameters
+   * @param {string} collectionName
+   */
   function find(parameters, collectionName){
     return new Promise((resolve, reject) => {
       try {
@@ -45,6 +53,10 @@ module.exports = function(setup) {
     });
   }
 
+  /**
+   * @param {object} parameters
+   * @param {string} collectionName
+   */
   function findAQL(parameters, collectionName) {
     return new Promise((resolve, reject) => {
       try {
@@ -53,7 +65,7 @@ module.exports = function(setup) {
         Object.keys(parameters).forEach(function(key) {
           conditions = conditions + aux + 'i.' + key + '==\'' + parameters[key] + '\'';
           aux = ' || ';
-          conditions = conditions + aux + ' \'' + parameters[key] + '\' IN i.' + key + '[*]' ;
+          conditions = conditions + aux + ' \'' +  parameters[key] + '\' IN i.' + key + '[*]' ;
         });
         if (conditions.length > 0) { conditions = ' FILTER ' + conditions; }
         db.query('FOR i IN ' + collectionName + conditions + ' RETURN i')
@@ -66,6 +78,10 @@ module.exports = function(setup) {
     });
   }
 
+  /**
+   * Raw AQL.
+   * @param {string} sentence
+   */
   function findAQLSentence(sentence) {
     return new Promise((resolve, reject) => {
       try {
@@ -77,6 +93,12 @@ module.exports = function(setup) {
     });
   }
 
+  /**
+   * Save (insert or replace by _key).
+   * @param {object} document
+   * @param {string} collectionName
+   * @param {boolean} [returnNew=false]
+   */
   function save(document, collectionName, returnNew = false){
     return new Promise((resolve, reject) => {
       try {

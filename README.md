@@ -23,7 +23,20 @@ arango.save(doc, 'mycollection').then(...);
 ```
 
 ## API
-- find, findAQL, findAQLSentence, save, remove
+
+### find(parameters, collectionName): Promise<docs[]>
+byExample query.
+
+### findAQL(parameters, collectionName): Promise<docs[]>
+Builds simple FILTER from parameters (supports IN for arrays).
+
+### findAQLSentence(sentence): Promise
+Raw AQL.
+
+### save(document, collectionName, [returnNew=false]): Promise
+Insert or replace (by _key). Internally uses exists + insert/update helpers (not exported on model).
+
+### remove(document, collectionName): Promise
 
 ## License
 
