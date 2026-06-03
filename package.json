@@ -1,7 +1,7 @@
 {
   "name": "@acastellon/arango",
-  "version": "1.0.6",
-  "description": "arangodb persistence interface",
+  "version": "1.1.0",
+  "description": "ArangoDB persistence interface",
   "main": "arango.js",
   "scripts": {
     "test": "node test.js"
@@ -17,12 +17,15 @@
     "nosql"
   ],
   "dependencies": {
-    "arangojs": "^7.7.0"
+    "arangojs": "^8.0.0"
   },
   "author": "Antonio Castellon",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/antonio-castellon/module-arango/issues"
   },
-  "homepage": "https://github.com/antonio-castellon/module-arango#readme"
+  "homepage": "https://github.com/antonio-castellon/module-arango#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

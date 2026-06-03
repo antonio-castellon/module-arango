@@ -2,10 +2,7 @@
 // test module
 //
 const config = require('./config.arango.template.js');
-const db = require('@acastellon/arango')(config);
+const db = require('./arango.js')(config);
 
-const _COLLECTION = 'lots';
- 
-db.find({},_COLLECTION )
-        .then((docs) => { console.log('succes execution ' + docs.length)})
-        .catch((e) => { console.log('ERROR ')})
+// db.find(..., 'collection').then(console.log);
+console.log('arango module updated - implement test with real collection');

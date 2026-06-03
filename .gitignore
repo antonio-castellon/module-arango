@@ -1,5 +1,18 @@
+# dependencies
 /node_modules/
-module-arango.iml
+
+# IDE
+*.iml
+
+# lockfiles
 package-lock.json
-module-arango.iml
-module-arango.iml
+
+# local configs
+/config.*.js
+/config.*.json
+
+# env
+.env*
+
+# logs
+*.log
